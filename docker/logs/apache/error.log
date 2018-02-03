@@ -1,0 +1,10 @@
+AH00112: Warning: DocumentRoot [/var/www/public] does not exist
+[Sat Feb 03 11:42:48.887112 2018] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Sat Feb 03 11:42:48.887170 2018] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00112: Warning: DocumentRoot [/var/www/public] does not exist
+[Sat Feb 03 11:43:25.989436 2018] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Sat Feb 03 11:43:25.989497 2018] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00112: Warning: DocumentRoot [/var/www/public] does not exist
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Feb 03 11:56:44.344640 2018] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Sat Feb 03 11:56:44.344702 2018] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND'

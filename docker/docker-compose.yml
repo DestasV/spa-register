@@ -1,0 +1,40 @@
+version: '2'
+
+volumes:
+  spa-register-mysql:
+    driver: local
+
+services:
+  spa-register-php:
+    build: ./php
+    working_dir: /var/www/
+    container_name: spa-register-php
+    environment:
+      DATABASE__USER: ${MYSQLSERVER_MYSQL_USER}
+      DATABASE__PASSWORD: ${MYSQLSERVER_MYSQL_PASSWORD}
+      DATABASE__HOST: ${MYSQLSERVER_MYSQL_HOST}
+      DATABASE__NAME: ${MYSQLSERVER_MYSQL_DATABASE}
+      DATABASE__PORT: ${MYSQLSERVER_MYSQL_PORT}
+    ports:
+      - '${APACHE_SERVER_PORT}:80'
+    volumes:
+      - ../:/var/www/
+      - ./logs/apache:/var/log/apache2
+    depends_on:
+      - spa-register-mysql
+    links:
+      - spa-register-mysql
+    command: "/var/www/docker/init.sh"
+
+  spa-register-mysql:
+    build: ./mysql
+    ports:
+      - '${MYSQLSERVER_MYSQL_PORT}:3306'
+    container_name: spa-register-mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQLSERVER_MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQLSERVER_MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQLSERVER_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQLSERVER_MYSQL_ROOT_PASSWORD}
+    volumes:
+      - spa-register-mysql:/var/lib/mysql
