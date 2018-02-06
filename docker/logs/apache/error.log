@@ -8,3 +8,12 @@ AH00112: Warning: DocumentRoot [/var/www/public] does not exist
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
 [Sat Feb 03 11:56:44.344640 2018] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
 [Sat Feb 03 11:56:44.344702 2018] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Feb 04 11:25:43.658778 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Sun Feb 04 11:25:43.658805 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Feb 06 09:40:42.185182 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Tue Feb 06 09:40:42.185305 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Tue Feb 06 10:00:24.675794 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Tue Feb 06 10:00:24.675839 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'

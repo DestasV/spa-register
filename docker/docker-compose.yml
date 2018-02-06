@@ -5,6 +5,13 @@ volumes:
     driver: local
 
 services:
+  spa-register-npm:
+    build: ./npm
+    container_name: spa-register-npm
+    working_dir: /var/www/
+    volumes:
+      - ../:/var/www/
+
   spa-register-php:
     build: ./php
     working_dir: /var/www/
