@@ -46,7 +46,7 @@ class User implements UserInterface
     private $country;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"registration"})
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -66,7 +66,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
 
     /**
@@ -74,7 +74,7 @@ class User implements UserInterface
      */
     public function setUsername($username)
     {
-        $this->email = $username;
+        $this->username = $username;
     }
 
     /**
@@ -146,8 +146,6 @@ class User implements UserInterface
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt,
         ));
     }
 
@@ -158,8 +156,6 @@ class User implements UserInterface
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt
             ) = unserialize($serialized);
     }
 }

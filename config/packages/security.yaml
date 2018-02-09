@@ -3,26 +3,30 @@ security:
         App\Entity\User:
             algorithm: bcrypt
 
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         spa_user_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            pattern: ~/
-            http_basic: ~
+            anonymous: ~
+            form_login:
+                login_path: user_login
+                check_path: user_login
+                default_target_path: user_profile
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:
+                path:   /logout
+                target: /
             provider: spa_user_provider
 
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # https://symfony.com/doc/current/security/form_login_setup.html
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: ROLE_USER }

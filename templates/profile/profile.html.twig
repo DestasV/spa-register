@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="columns">
+        <div class="column is-2 is-offset-5">
+            <section class="section" style="background-color: #ECECEA">
+                <h2 class="title">Edit</h2>
+                <article class="message is-info">
+                    <div class="message-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </article>
+                <article class="message is-success success" style="display: none;">
+                    <div class="message-body">
+                        Profile updated successfully!
+                    </div>
+                </article>
+                    {% include 'form/user_form.html.twig' with {'form': form, 'buttonName' : 'Update' } %}
+            </section>
+        </div>
+    </div>
+{% endblock %}

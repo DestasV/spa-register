@@ -1,19 +1,10 @@
-{% extends 'base.html.twig' %}
-{% use "bootstrap_base_layout.html.twig" %}
-
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                {{ form_start(form) }}
-                {{ form_row(form.username) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.country) }}
-                {{ form_row(form.plainPassword.first) }}
-                {{ form_row(form.plainPassword.second) }}
-                <button type="submit">Register!</button>
-                {{ form_end(form) }}
-            </div>
+    <div class="columns">
+        <div class="column is-2 is-offset-5">
+            <section class="section" style="background-color: #ECECEA">
+                <h2 class="title">Register</h2>
+                {% include 'form/user_form.html.twig' with {'form': form, 'buttonName' : 'Register' } %}
+            </section>
         </div>
     </div>
 {% endblock %}

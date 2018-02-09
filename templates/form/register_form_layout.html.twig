@@ -1,0 +1,73 @@
+{% use 'form_div_layout.html.twig' with form_label as base_form_label, choice_widget_collapsed as choice_widget_collapsed_base %}
+{% form_theme form _self %}
+
+{%- block _user_username_widget -%}
+    {%- set type = type|default('text') -%}
+    <div class="control has-icons-left has-icons-right">
+        <input class="input" type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+    </span>
+    </div>
+{%- endblock _user_username_widget -%}
+
+{%- block form_label -%}
+    {%- set label_attr = label_attr|merge({class: (attr.class|default('') ~ ' label')|trim}) -%}
+    {{ block('base_form_label') }}
+{%- endblock form_label -%}
+
+{%- block form_row -%}
+    <div class="field">
+        {{- form_label(form) -}}
+        {{- form_widget(form) -}}
+        {{- form_errors(form) -}}
+        {%- if form.vars.attr.help_text is defined -%}
+            <p class="help">{{ form.vars.attr.help_text }}</p>
+        {%- endif -%}
+    </div>
+{%- endblock form_row -%}
+
+{%- block _user_email_widget -%}
+    {%- set type = type|default('text') -%}
+    <div class="control has-icons-left has-icons-right">
+        <input class="input" type="email" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+        </span>
+    </div>
+{%- endblock _user_email_widget -%}
+
+{%- block _user_plainPassword_second_widget -%}
+    <div class="control has-icons-left has-icons-right">
+        <input class="input" type="password" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+    </span>
+    </div>
+{%- endblock _user_plainPassword_second_widget -%}
+
+{%- block _user_plainPassword_first_widget -%}
+    <div class="control has-icons-left has-icons-right">
+        <input class="input" type="password" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+    </span>
+    </div>
+{%- endblock _user_plainPassword_first_widget -%}
+
+{% block _user_country_widget %}
+    <div class="control">
+        <span class="select">
+            {{ block('choice_widget_collapsed_base') }}
+        </span>
+        {{- block('form_errors') -}}
+    </div>
+{% endblock _user_country_widget %}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        {%- for error in errors -%}
+            <p class="help is-danger">{{ error.message }}</p>
+        {%- endfor -%}
+    {%- endif -%}
+{%- endblock form_errors -%}

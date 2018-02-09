@@ -17,3 +17,12 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Tue Feb 06 10:00:24.675794 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
 [Tue Feb 06 10:00:24.675839 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Wed Feb 07 09:24:38.340624 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Wed Feb 07 09:24:38.340662 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Thu Feb 08 08:32:34.205104 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Thu Feb 08 08:32:34.205143 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 09 03:21:08.867931 2018] [mpm_prefork:notice] [pid 27] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured -- resuming normal operations
+[Fri Feb 09 03:21:08.868034 2018] [core:notice] [pid 27] AH00094: Command line: 'apache2 -D FOREGROUND'

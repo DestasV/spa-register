@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+{{ form_row(form.username) }}
+{{ form_row(form.email) }}
+{{ form_row(form.country) }}
+{{ form_row(form.plainPassword.first) }}
+{{ form_row(form.plainPassword.second) }}
+<div class="field">
+    <div class="control">
+        <button id="{{ buttonName|lower }}" class="button is-link" type="submit" style="margin-top: 2rem;">{{ buttonName }}</button>
+    </div>
+</div>
+{{ form_end(form) }}

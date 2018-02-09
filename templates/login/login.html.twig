@@ -1,0 +1,40 @@
+{% block body %}
+    <div class="columns">
+        <div class="column is-2 is-offset-5">
+            <section class="section" style="background-color: #ECECEA">
+                <h2 class="title">Login</h2>
+                {% if error %}
+                    <p class="help is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+
+                <form action="{{ path('user_login') }}" method="post">
+                    <div class="field">
+                        <label class="label" for="username">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" id="username" name="username" value="{{ last_username }}" />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="password">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="password" id="password" name="password" />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-key"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button id="login" class="button is-link" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+{% endblock %}
