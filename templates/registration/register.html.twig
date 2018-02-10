@@ -1,8 +1,13 @@
 {% block body %}
     <div class="columns">
         <div class="column is-2 is-offset-5">
-            <section class="section" style="background-color: #ECECEA">
+            <section class="section section-background">
                 <h2 class="title">Register</h2>
+                <article class="message is-success success" style="display: none;">
+                    <div class="message-body">
+                        Account created successfully! Please login with your credentials
+                    </div>
+                </article>
                 {% include 'form/user_form.html.twig' with {'form': form, 'buttonName' : 'Register' } %}
             </section>
         </div>

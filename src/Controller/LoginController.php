@@ -14,39 +14,38 @@ class LoginController extends Controller
 {
     /**
      * @Route("/login", name="user_login")
+     *
+     * @param Request             $request
+     * @param AuthenticationUtils $authUtils
+     *
+     * @return JsonResponse
      */
     public function login(Request $request, AuthenticationUtils $authUtils)
     {
         if (!$request->isXmlHttpRequest()) {
-            return new JsonResponse(array('status' => 'error'), 400);
-        }
-
-        $user = $this->getUser();
-        if ($user instanceof UserInterface) {
-            return $this->redirectToRoute('user_profile');
+            return new JsonResponse(['status' => 'error'], 400);
         }
 
         $error = $authUtils->getLastAuthenticationError(true);
         $lastUsername = $authUtils->getLastUsername();
 
-
         if ($error) {
             $response = new JsonResponse([
-                'form' => $this->renderView('login/login.html.twig',
-                    array(
-                        'last_username' => $lastUsername,
-                        'error' => $error,
-                    ))], 400);
+                'form' => $this->renderView('login/login.html.twig', [
+                    'last_username' => $lastUsername,
+                    'error' => $error,
+                ])
+            ], 400);
 
             return $response;
         }
 
-        $response = new JsonResponse(
-            $this->renderView('login/login.html.twig',
+        $response = new JsonResponse([
+            'form' => $this->renderView('login/login.html.twig',
                 array(
                     'last_username' => $lastUsername,
                     'error' => $error,
-                )), 200);
+                ))], 200);
 
         return $response;
     }

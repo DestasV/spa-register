@@ -20,18 +20,27 @@ class RegistrationController extends Controller
 {
     /**
      * @Route("/register", name="user_registration")
+     *
+     * @param Request                      $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     *
+     * @return JsonResponse
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         if (!$request->isXmlHttpRequest()) {
-            return new JsonResponse(array('status' => 'error'), 400);
+            return new JsonResponse([
+                'status' => 'error'
+            ], 400);
         }
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user, [
             'action' => $this->generateUrl('user_registration'),
             'method' => 'POST',
-            'validation_groups' => ['registration'],
+            'validation_groups' => [
+                'registration'
+            ],
         ]);
 
         $form->handleRequest($request);
@@ -43,28 +52,27 @@ class RegistrationController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $user = $this->getUser();
-            if ($user instanceof UserInterface) {
-                return $this->redirectToRoute('user_profile');
-            }
-//            return $this->redirectToRoute('user_profile');
+            return new JsonResponse([
+                'redirect' => null,
+                'status' => 'ok',
+            ]);
         }
 
         if ($form->isSubmitted() && !$form->isValid()) {
             $response = new JsonResponse([
-                'form' => $this->renderView('registration/register.html.twig',
-                    [
-                        'form' => $form->createView(),
-                    ])], 400);
+                'form' => $this->renderView('registration/register.html.twig', [
+                    'form' => $form->createView(),
+                ])
+            ], 400);
 
             return $response;
         }
 
-        return new JsonResponse(
-            $this->renderView('registration/register.html.twig',
+        return new JsonResponse([
+            'form' => $this->renderView('registration/register.html.twig',
                 array(
                     'form' => $form->createView(),
-                )), 200);
-
+                ))
+        ], 200);
     }
 }

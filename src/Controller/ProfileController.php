@@ -13,9 +13,15 @@ class ProfileController extends Controller
 {
     /**
      * @Route("/profile", name="user_profile")
+     *
+     * @param Request                      $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     *
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
         $form = $this->createForm(UserType::class, $user, [
             'action' => $this->generateUrl('user_profile'),
@@ -32,16 +38,18 @@ class ProfileController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return new JsonResponse(['status' => 'ok'], 200);
+            return new JsonResponse([
+                'redirect' => null,
+                'status' => 'ok'
+            ], 200);
         }
 
-        if ($request->isXmlHttpRequest()) {
-            $response = new JsonResponse(
-                [
-                    'form' => $this->renderView('profile/profile.html.twig',
-                        [
-                            'form' => $form->createView(),
-                        ])], 400);
+        if ($request->isXmlHttpRequest() && $form->isSubmitted() && !$form->isValid()) {
+            $response = new JsonResponse([
+                'form' => $this->renderView('profile/profile.html.twig', [
+                    'form' => $form->createView(),
+                ])
+            ], 400);
 
             return $response;
         }

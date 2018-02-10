@@ -27,6 +27,10 @@ $(document).ready(function() {
                     $('.success').show().delay(3000).fadeOut();
                     $('.is-danger').hide();
                 }
+
+                if (data.redirect !== null) {
+                    window.location.replace(data.redirect);
+                }
             })
             .fail(function (jqXHR) {
                 if (typeof jqXHR.responseJSON !== 'undefined') {
@@ -48,7 +52,7 @@ function callPage(pageRef) {
         success: function (response) {
             let $content = $('.content');
             $content.empty();
-            $content.html(response);
+            $content.html(response.form);
         },
 
         error: function (error) {

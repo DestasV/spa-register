@@ -6,8 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email")
  */
 class User implements UserInterface
 {
@@ -47,9 +51,17 @@ class User implements UserInterface
 
     /**
      * @Assert\NotBlank(groups={"registration"})
-     * @Assert\Length(max=4096)
+     * @Assert\Length(max=4096, min="6", minMessage="Password must be at least 6 characters long")
      */
     private $plainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getPlainPassword()
     {

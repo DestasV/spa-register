@@ -1,7 +1,7 @@
 {% block body %}
     <div class="columns">
         <div class="column is-2 is-offset-5">
-            <section class="section" style="background-color: #ECECEA">
+            <section class="section section-background">
                 <h2 class="title">Login</h2>
                 {% if error %}
                     <p class="help is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
@@ -11,7 +11,7 @@
                     <div class="field">
                         <label class="label" for="username">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" id="username" name="username" value="{{ last_username }}" />
+                            <input class="input" type="text" id="username" name="_username" value="{{ last_username }}" />
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -20,7 +20,7 @@
                     <div class="field">
                         <label class="label" for="password">Password</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="password" id="password" name="password" />
+                            <input class="input" type="password" id="password" name="_password" />
                             <span class="icon is-small is-left">
                                 <i class="fas fa-key"></i>
                             </span>
