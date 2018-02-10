@@ -21,6 +21,8 @@
 /public/bundles/
 /public/build/*
 /public/build/
+/docker/logs/
+
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
