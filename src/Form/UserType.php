@@ -42,15 +42,15 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Password', ],
                 'second_options' => ['label' => 'Repeat Password', 'required' => false],
             ])
-//            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
-//                $user = $event->getData();
-//
-//                if (!$user->getId()) {
-//                    return;
-//                }
-//
-//                $this->historyCreator->saveUserHistory($user);
-//            })
+            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+                $user = $event->getData();
+
+                if (!$user->getId()) {
+                    return;
+                }
+
+                $this->historyCreator->saveUserHistory($user);
+            })
         ;
     }
 

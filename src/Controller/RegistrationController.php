@@ -39,7 +39,8 @@ class RegistrationController extends Controller
             'action' => $this->generateUrl('user_registration'),
             'method' => 'POST',
             'validation_groups' => [
-                'registration'
+                'registration',
+                'Default'
             ],
         ]);
 
