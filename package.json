@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.17.0",
+        "@symfony/webpack-encore": "^4.2.0",
         "bulma": "^0.6.2",
         "bulma-start": "0.0.2",
         "jquery": "^3.3.1",
